@@ -1,0 +1,232 @@
+/* -----------------------------------
+   style.css
+   Google-like Dark UI (Semantic + Horizontal)
+   Clean, Modern & Fully Responsive
+------------------------------------*/
+
+:root {
+  --bg: #0d0d0d;
+  --card-bg: #1a1a1a;
+  --text: #f5f5f5;
+  --subtext: #a0a0a0;
+  --accent: #ffffff;
+  --danger: #ff4d4d;
+  --radius: 10px;
+  --transition: 0.25s cubic-bezier(.25, .8, .25, 1);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  font-family: "Inter", "Poppins", system-ui, sans-serif;
+}
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body setup */
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* main container */
+.app {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 800px;
+  padding: 24px 32px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* header section */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.header .subtitle {
+  font-size: 0.9rem;
+  color: var(--subtext);
+  margin-top: 4px;
+}
+
+/* control row */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* input field */
+#todo-input {
+  flex: 1;
+  background: #121212;
+  color: var(--text);
+  border: 1px solid #2b2b2b;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+#todo-input:focus {
+  border-color: #3a3a3a;
+  outline: none;
+  background: #161616;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.05);
+}
+
+/* add button */
+#add-btn {
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+#add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
+}
+
+#add-btn:active {
+  transform: scale(0.97);
+}
+
+/* todo list */
+#todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* todo item */
+#todo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #141414;
+  border: 1px solid #1f1f1f;
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  transition: var(--transition);
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#todo-list li:hover {
+  background: #181818;
+}
+
+/* left side: checkbox + text */
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.todo-left input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.todo-left span {
+  font-size: 1rem;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+/* completed todo */
+#todo-list li.completed span {
+  text-decoration: line-through;
+  color: #777;
+}
+
+/* delete button */
+.delete-btn {
+  background: transparent;
+  color: var(--danger);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.delete-btn:hover {
+  background: rgba(255, 77, 77, 0.1);
+  transform: scale(1.05);
+}
+
+/* empty list */
+.empty {
+  color: var(--subtext);
+  text-align: center;
+  padding: 28px;
+  font-size: 0.95rem;
+}
+
+/* animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* responsive behavior */
+@media (max-width: 600px) {
+  .app {
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  #add-btn {
+    width: 100%;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
